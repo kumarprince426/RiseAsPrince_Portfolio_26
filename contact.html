@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact – Prince Kumar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <img src="riseasprincelogo.png" alt="Prince" class="nav-avatar" />
+      <span class="nav-name">RiseAsPrince</span>
+    </a>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-auth-area" id="navAuthArea">
+      <a href="login.html" class="nav-btn-login">Login</a>
+      <a href="login.html?tab=signup" class="nav-btn-signup">Sign Up</a>
+    </div>
+    <div class="nav-user-info hidden" id="navUserArea">
+      <div class="nav-user-dot" id="navUserDot">P</div>
+      <span class="nav-user-name" id="navUserName">User</span>
+      <button class="nav-btn-logout" id="navLogout">Logout</button>
+    </div>
+  </nav>
+  <link rel="stylesheet" href="auth.css" />
+
+  <div class="page">
+    <div class="section">
+      <div class="section-header reveal">
+        <span class="section-tag">Let's Connect</span>
+        <h2 class="section-title">Get In <span>Touch</span></h2>
+        <div class="section-line"></div>
+        <p class="section-sub">Have a project, opportunity, or just want to say hi?</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Links -->
+        <div class="reveal">
+          <h3 style="color:var(--white); margin-bottom:1.5rem; font-size:1.1rem;">📬 Contact Info</h3>
+          <div class="contact-links">
+            <a href="tel:+916202849536" class="contact-link">
+              <span class="contact-link-icon">📞</span>
+              <div class="contact-link-info">
+                <small>Phone</small>
+                <strong>+91 6202849536</strong>
+              </div>
+            </a>
+            <a href="mailto:riseasprince@gmail.com" class="contact-link">
+              <span class="contact-link-icon">📧</span>
+              <div class="contact-link-info">
+                <small>Email</small>
+                <strong>riseasprince@gmail.com</strong>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/princekumar426" target="_blank" class="contact-link">
+              <span class="contact-link-icon">💼</span>
+              <div class="contact-link-info">
+                <small>LinkedIn</small>
+                <strong>linkedin.com/in/princekumar426</strong>
+              </div>
+            </a>
+            <a href="https://github.com/kumarprince426" target="_blank" class="contact-link">
+              <span class="contact-link-icon">🐙</span>
+              <div class="contact-link-info">
+                <small>GitHub</small>
+                <strong>github.com/kumarprince426</strong>
+              </div>
+            </a>
+            <a href="https://www.instagram.com/riseasprince" target="_blank" class="contact-link">
+              <span class="contact-link-icon">📸</span>
+              <div class="contact-link-info">
+                <small>Instagram</small>
+                <strong>@riseasprince</strong>
+              </div>
+            </a>
+            <a href="https://x.com/riseasprince" target="_blank" class="contact-link">
+              <span class="contact-link-icon">𝕏</span>
+              <div class="contact-link-info">
+                <small>X (Twitter)</small>
+                <strong>@riseasprince</strong>
+              </div>
+            </a>
+            <div class="contact-link" style="cursor:default;">
+              <span class="contact-link-icon">📍</span>
+              <div class="contact-link-info">
+                <small>Location</small>
+                <strong>Samastipur, Bihar, India</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Enquiry Form -->
+        <div class="reveal">
+          <h3 style="color:var(--white); margin-bottom:1.5rem; font-size:1.1rem;">✉️ Send Enquiry</h3>
+          <form class="enquiry-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Your Name *</label>
+                <input type="text" name="name" placeholder="Miss Jaadu" required />
+              </div>
+              <div class="form-group">
+                <label>Your Email *</label>
+                <input type="email" name="email" placeholder="missjaadu@gmail.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <input type="text" name="subject" placeholder="Project Collaboration / Job Opportunity..." />
+            </div>
+            <div class="form-group">
+              <label>Message *</label>
+              <textarea name="message" rows="5" placeholder="Tell me about your project or opportunity..." required></textarea>
+            </div>
+            <div class="form-success" id="formSuccess">
+              ✅ Message sent! I'll get back to you soon.
+            </div>
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send Message </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 Prince Kumar &nbsp;|&nbsp; <a href="mailto:riseasprince@gmail.com">riseasprince@gmail.com</a> &nbsp;|&nbsp; Samastipur, Bihar, India</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

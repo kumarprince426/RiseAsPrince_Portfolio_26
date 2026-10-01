@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – Prince Kumar | DevOps Engineer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+  <style>
+    /* ── About page extras ── */
+    .about-hero {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* Left sidebar card */
+    .about-profile-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 80px;
+    }
+    .about-profile-card img {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--purple);
+      object-fit: cover;
+      box-shadow: 0 0 30px rgba(99,102,241,0.3);
+      margin-bottom: 1rem;
+    }
+    .profile-name {
+      font-size: 1.15rem; font-weight: 800;
+      color: var(--white); margin-bottom: 0.25rem;
+    }
+    .profile-role {
+      font-size: 0.8rem; color: var(--purple-light);
+      font-weight: 600; letter-spacing: 0.5px;
+      margin-bottom: 1.2rem;
+    }
+    .profile-info-list { text-align: left; margin-bottom: 1.2rem; }
+    .profile-info-item {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.82rem;
+    }
+    .profile-info-item:last-child { border-bottom: none; }
+    .pii-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .pii-label { color: var(--muted); font-size: 0.72rem; display: block; }
+    .pii-value { color: var(--text); font-weight: 500; }
+    .profile-status {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(74,222,128,0.1);
+      border: 1px solid rgba(74,222,128,0.25);
+      color: var(--green);
+      font-size: 0.75rem; font-weight: 600;
+      padding: 0.3rem 0.85rem; border-radius: 50px;
+      margin-bottom: 1.2rem;
+    }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; }
+
+    /* Right content */
+    .about-content { display: flex; flex-direction: column; gap: 2rem; }
+
+    .about-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.6rem 1.8rem;
+    }
+    .ab-heading {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.78rem; font-weight: 700;
+      color: var(--cyan);
+      text-transform: uppercase; letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .ab-heading span { font-size: 1.1rem; }
+
+    /* Bio */
+    .bio-text p {
+      color: var(--muted); line-height: 1.85;
+      font-size: 0.93rem; margin-bottom: 0.85rem;
+    }
+    .bio-text p:last-child { margin-bottom: 0; }
+    .bio-text strong { color: var(--purple-light); }
+
+    /* What I Do */
+    .what-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .what-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1rem;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .what-item:hover { border-color: var(--purple); transform: translateY(-3px); }
+    .what-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .what-title { font-size: 0.88rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
+    .what-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+    /* Core Values */
+    .values-list { display: flex; flex-direction: column; gap: 0.65rem; }
+    .value-item {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      padding: 0.7rem 1rem;
+      background: rgba(255,255,255,0.02);
+      border-radius: 10px;
+      border-left: 3px solid var(--purple);
+    }
+    .value-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .value-title { font-size: 0.88rem; font-weight: 700; color: var(--white); }
+    .value-desc { font-size: 0.78rem; color: var(--muted); margin-top: 0.1rem; }
+
+    /* Tags row */
+    .tags-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .stat-item { text-align: center; padding: 1rem 0.5rem; }
+    .stat-num-lg {
+      font-size: 2rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--purple-light), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-lbl { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; }
+    .stat-divider {
+      width: 1px; background: var(--border);
+      margin: auto 0;
+    }
+
+    /* CTA */
+    .about-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* Timeline inside block */
+    .ab-timeline { display: flex; flex-direction: column; gap: 0; }
+    .ab-tl-item {
+      display: flex; gap: 1rem; padding-bottom: 1.5rem;
+      position: relative;
+    }
+    .ab-tl-item:last-child { padding-bottom: 0; }
+    .ab-tl-left {
+      display: flex; flex-direction: column; align-items: center;
+      flex-shrink: 0; width: 36px;
+    }
+    .ab-tl-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--purple);
+      box-shadow: 0 0 10px rgba(99,102,241,0.5);
+      flex-shrink: 0; margin-top: 4px;
+    }
+    .ab-tl-line {
+      flex: 1; width: 2px;
+      background: linear-gradient(180deg, var(--purple) 0%, transparent 100%);
+      opacity: 0.3; margin-top: 4px;
+    }
+    .ab-tl-item:last-child .ab-tl-line { display: none; }
+    .ab-tl-date {
+      font-size: 0.72rem; font-weight: 700;
+      color: var(--purple-light); margin-bottom: 0.2rem;
+      letter-spacing: 0.5px;
+    }
+    .ab-tl-title { font-size: 0.93rem; font-weight: 700; color: var(--white); }
+    .ab-tl-sub { font-size: 0.78rem; color: var(--cyan); margin: 0.15rem 0; }
+    .ab-tl-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+    @media (max-width: 768px) {
+      .about-hero { grid-template-columns: 1fr; }
+      .about-profile-card { position: static; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .what-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .what-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <img src="riseasprincelogo.png" alt="Prince" class="nav-avatar" />
+      <span class="nav-name">RiseAsPrince</span>
+    </a>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-auth-area" id="navAuthArea">
+      <a href="login.html" class="nav-btn-login">Login</a>
+      <a href="login.html?tab=signup" class="nav-btn-signup">Sign Up</a>
+    </div>
+    <div class="nav-user-info hidden" id="navUserArea">
+      <div class="nav-user-dot" id="navUserDot">P</div>
+      <span class="nav-user-name" id="navUserName">User</span>
+      <button class="nav-btn-logout" id="navLogout">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="section">
+
+      <!-- Section Header -->
+      <div class="section-header reveal">
+        <span class="section-tag">Who I Am</span>
+        <h2 class="section-title">About <span>Me</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- Main 2-col layout -->
+      <div class="about-hero">
+
+        <!-- ── LEFT: Profile Card ── -->
+        <div class="about-profile-card reveal">
+          <img src="Myimages.png" alt="Prince Kumar" />
+          <div class="profile-name">Prince Kumar</div>
+          <div class="profile-role">DevOps Engineer</div>
+
+          <div class="profile-status">
+            <span class="status-dot"></span> Open to Opportunities
+          </div>
+
+          <div class="profile-info-list">
+            <div class="profile-info-item">
+              <span class="pii-icon">🎓</span>
+              <div>
+                <span class="pii-label">Degree</span>
+                <span class="pii-value">B.Tech – Computer Science</span>
+              </div>
+            </div>
+            <div class="profile-info-item">
+              <span class="pii-icon">📍</span>
+              <div>
+                <span class="pii-label">Location</span>
+                <span class="pii-value">Samastipur, Bihar, India</span>
+              </div>
+            </div>
+            <div class="profile-info-item">
+              <span class="pii-icon">📧</span>
+              <div>
+                <span class="pii-label">Email</span>
+                <span class="pii-value">riseasprince@gmail.com</span>
+              </div>
+            </div>
+            <div class="profile-info-item">
+              <span class="pii-icon">📱</span>
+              <div>
+                <span class="pii-label">Phone</span>
+                <span class="pii-value">+91 6202849536</span>
+              </div>
+            </div>
+            <div class="profile-info-item">
+              <span class="pii-icon">🐙</span>
+              <div>
+                <span class="pii-label">GitHub</span>
+                <span class="pii-value">kumarprince426</span>
+              </div>
+            </div>
+            <div class="profile-info-item">
+              <span class="pii-icon">💼</span>
+              <div>
+                <span class="pii-label">LinkedIn</span>
+                <span class="pii-value">princekumar426</span>
+              </div>
+            </div>
+            <div class="profile-info-item">
+              <span class="pii-icon">🌐</span>
+              <div>
+                <span class="pii-label">Instagram / X</span>
+                <span class="pii-value">@riseasprince</span>
+              </div>
+            </div>
+          </div>
+
+          <a href="resume.html" class="btn btn-primary" style="width:100%; justify-content:center;">📄 Download Resume</a>
+        </div>
+
+        <!-- ── RIGHT: Content Blocks ── -->
+        <div class="about-content">
+
+          <!-- 1. Bio -->
+          <div class="about-block reveal">
+            <div class="ab-heading"><span>👋</span> Introduction</div>
+            <div class="bio-text">
+              <p>
+                Hi, I'm <strong>Prince Kumar</strong> — a B.Tech student with a strong passion for <strong>DevOps, Cloud Engineering, and Site Reliability Engineering</strong>. I enjoy bridging the gap between development and operations, automating everything that can be automated, shipping software faster, and keeping systems reliable at scale.
+              </p>
+              <p>
+                My core expertise covers <strong>container orchestration</strong> with Docker &amp; Kubernetes, <strong>infrastructure as code</strong> using Terraform &amp; Ansible, building robust <strong>CI/CD pipelines</strong> with Jenkins &amp; GitHub Actions, and deploying production workloads on <strong>AWS cloud</strong>.
+              </p>
+              <p>
+                When I'm not building pipelines, I explore new DevOps tools, write shell scripts, contribute to open-source, and study for cloud certifications. I strongly believe in <strong>"automate everything"</strong> and a culture of continuous improvement.
+              </p>
+            </div>
+          </div>
+
+          <!-- 2. Stats -->
+          <div class="about-block reveal">
+            <div class="ab-heading"><span>📊</span> At a Glance</div>
+            <div class="stats-row">
+              <div class="stat-item">
+                <div class="stat-num-lg" data-count="7" data-suffix="+">7+</div>
+                <div class="stat-lbl">DevOps Projects</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num-lg" data-count="15" data-suffix="+">15+</div>
+                <div class="stat-lbl">Tools Mastered</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num-lg" data-count="3" data-suffix="+">3+</div>
+                <div class="stat-lbl">Cloud Platforms</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num-lg" data-count="5" data-suffix="+">5+</div>
+                <div class="stat-lbl">Certifications</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. What I Do -->
+          <div class="about-block reveal">
+            <div class="ab-heading"><span>⚙️</span> What I Do</div>
+            <div class="what-grid">
+              <div class="what-item">
+                <div class="what-icon">🔄</div>
+                <div class="what-title">CI/CD Pipelines</div>
+                <div class="what-desc">Design and automate end-to-end delivery pipelines with Jenkins, GitHub Actions, and ArgoCD.</div>
+              </div>
+              <div class="what-item">
+                <div class="what-icon">🐳</div>
+                <div class="what-title">Containerization</div>
+                <div class="what-desc">Dockerize applications and orchestrate microservices at scale using Kubernetes and Helm.</div>
+              </div>
+              <div class="what-item">
+                <div class="what-icon">🏗️</div>
+                <div class="what-title">Infrastructure as Code</div>
+                <div class="what-desc">Provision and manage cloud infrastructure repeatably using Terraform and Ansible.</div>
+              </div>
+              <div class="what-item">
+                <div class="what-icon">☁️</div>
+                <div class="what-title">Cloud Engineering</div>
+                <div class="what-desc">Deploy and manage workloads on AWS — EC2, S3, VPC, EKS, IAM, and more.</div>
+              </div>
+              <div class="what-item">
+                <div class="what-icon">📊</div>
+                <div class="what-title">Monitoring & Logging</div>
+                <div class="what-desc">Set up observability stacks using Prometheus, Grafana, and the ELK Stack.</div>
+              </div>
+              <div class="what-item">
+                <div class="what-icon">🛡️</div>
+                <div class="what-title">DevSecOps</div>
+                <div class="what-desc">Integrate security scanning (SonarQube, Trivy) into pipelines for shift-left security.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Core Values -->
+          <div class="about-block reveal">
+            <div class="ab-heading"><span>💡</span> Core Values</div>
+            <div class="values-list">
+              <div class="value-item">
+                <span class="value-icon">🤖</span>
+                <div>
+                  <div class="value-title">Automate Everything</div>
+                  <div class="value-desc">If it runs more than twice, it should be automated. Manual work is tech debt.</div>
+                </div>
+              </div>
+              <div class="value-item">
+                <span class="value-icon">📈</span>
+                <div>
+                  <div class="value-title">Continuous Improvement</div>
+                  <div class="value-desc">Always learning, always iterating — DevOps is a culture, not just a toolchain.</div>
+                </div>
+              </div>
+              <div class="value-item">
+                <span class="value-icon">🔒</span>
+                <div>
+                  <div class="value-title">Security First</div>
+                  <div class="value-desc">Security belongs in the pipeline, not after deployment. Shift left, always.</div>
+                </div>
+              </div>
+              <div class="value-item">
+                <span class="value-icon">🤝</span>
+                <div>
+                  <div class="value-title">Collaboration Over Silos</div>
+                  <div class="value-desc">Dev and Ops working together = faster delivery, fewer incidents, better products.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Interests / Tags -->
+          <div class="about-block reveal">
+            <div class="ab-heading"><span>🏷️</span> Areas of Interest</div>
+            <div class="tags-row">
+              <span class="tag">DevOps</span>
+              <span class="tag">Cloud (AWS)</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Kubernetes</span>
+              <span class="tag">Terraform</span>
+              <span class="tag">CI/CD</span>
+              <span class="tag">Ansible</span>
+              <span class="tag">Linux</span>
+              <span class="tag">Shell Scripting</span>
+              <span class="tag">Monitoring</span>
+              <span class="tag">DevSecOps</span>
+              <span class="tag">Open Source</span>
+              <span class="tag">Site Reliability</span>
+            </div>
+          </div>
+
+          <!-- 6. CTA -->
+          <div class="about-cta reveal">
+            <a href="projects.html" class="btn btn-primary">🚀 View My Projects</a>
+            <a href="skills.html"   class="btn btn-outline">🛠️ See My Skills</a>
+            <a href="contact.html"  class="btn btn-outline">📬 Get In Touch</a>
+          </div>
+
+        </div><!-- end about-content -->
+      </div><!-- end about-hero -->
+
+      <!-- ── Education & Journey Timeline ── -->
+      <div style="margin-top: 3.5rem;">
+        <div class="section-header reveal">
+          <span class="section-tag">Background</span>
+          <h2 class="section-title">Education &amp; <span>Journey</span></h2>
+          <div class="section-line"></div>
+          <p class="section-sub">My academic path and DevOps growth story</p>
+        </div>
+
+        <div class="journey-timeline">
+
+          <!-- Entry 1 -->
+          <div class="jt-entry reveal">
+            <div class="jt-connector">
+              <div class="jt-icon-wrap edu">🎓</div>
+              <div class="jt-vline"></div>
+            </div>
+            <div class="jt-card">
+              <div class="jt-card-top">
+                <div>
+                  <span class="jt-badge edu">Education</span>
+                  <h3 class="jt-title">Bachelor of Technology (B.Tech)</h3>
+                  <div class="jt-org">Computer Science · DevOps &amp; Cloud Specialization</div>
+                </div>
+                <div class="jt-date-pill">2023 – Present</div>
+              </div>
+              <div class="jt-meta-row">
+                <span class="jt-meta-item">🆔 Reg. No: 24105113060</span>
+                <span class="jt-meta-item">📍 Bihar, India</span>
+                <span class="jt-meta-item">🟢 Active</span>
+              </div>
+              <p class="jt-desc">
+                Pursuing B.Tech with a core focus on DevOps practices, cloud computing, Linux systems administration, and software engineering fundamentals. Actively participating in hackathons, open-source communities, and national-level tech events to sharpen real-world skills.
+              </p>
+              <div class="jt-tools">
+                <span class="jt-tool">Linux</span>
+                <span class="jt-tool">Networking</span>
+                <span class="jt-tool">Cloud Computing</span>
+                <span class="jt-tool">Software Engineering</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entry 2 -->
+          <div class="jt-entry reveal">
+            <div class="jt-connector">
+              <div class="jt-icon-wrap devops">⚙️</div>
+              <div class="jt-vline"></div>
+            </div>
+            <div class="jt-card">
+              <div class="jt-card-top">
+                <div>
+                  <span class="jt-badge devops">Self Learning</span>
+                  <h3 class="jt-title">DevOps Learning Path</h3>
+                  <div class="jt-org">KodeKloud · Udemy · Hands-on Projects</div>
+                </div>
+                <div class="jt-date-pill">2024 – Present</div>
+              </div>
+              <div class="jt-meta-row">
+                <span class="jt-meta-item">🧰 10+ Tools</span>
+                <span class="jt-meta-item">🏗️ 7+ Projects Built</span>
+                <span class="jt-meta-item">🟢 Ongoing</span>
+              </div>
+              <p class="jt-desc">
+                Self-taught all core DevOps tools through a structured learning path — starting from Docker containerization, scaling up to Kubernetes orchestration, Terraform IaC, Jenkins pipelines, and AWS cloud deployments. Built real production-grade infrastructure from scratch through daily labs and projects.
+              </p>
+              <div class="jt-path-row">
+                <span class="jt-path-item">🐳 Docker</span>
+                <span class="jt-arrow">→</span>
+                <span class="jt-path-item">☸️ Kubernetes</span>
+                <span class="jt-arrow">→</span>
+                <span class="jt-path-item">🏗️ Terraform</span>
+                <span class="jt-arrow">→</span>
+                <span class="jt-path-item">🔄 Jenkins</span>
+                <span class="jt-arrow">→</span>
+                <span class="jt-path-item">⚡ GitHub Actions</span>
+                <span class="jt-arrow">→</span>
+                <span class="jt-path-item">☁️ AWS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entry 3 -->
+          <div class="jt-entry reveal">
+            <div class="jt-connector">
+              <div class="jt-icon-wrap cert">🏆</div>
+              <div class="jt-vline"></div>
+            </div>
+            <div class="jt-card">
+              <div class="jt-card-top">
+                <div>
+                  <span class="jt-badge cert">Certification</span>
+                  <h3 class="jt-title">AWS Cloud Practitioner Certified</h3>
+                  <div class="jt-org">Amazon Web Services · CLF-C02</div>
+                </div>
+                <div class="jt-date-pill">2025</div>
+              </div>
+              <div class="jt-meta-row">
+                <span class="jt-meta-item">✅ Certified</span>
+                <span class="jt-meta-item">🏢 Amazon Web Services</span>
+              </div>
+              <p class="jt-desc">
+                Earned the AWS Cloud Practitioner certification validating foundational cloud knowledge across core AWS services and best practices.
+              </p>
+              <div class="jt-tools">
+                <span class="jt-tool">EC2</span>
+                <span class="jt-tool">S3</span>
+                <span class="jt-tool">IAM</span>
+                <span class="jt-tool">VPC</span>
+                <span class="jt-tool">Lambda</span>
+                <span class="jt-tool">RDS</span>
+                <span class="jt-tool">CloudWatch</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entry 4 -->
+          <div class="jt-entry reveal">
+            <div class="jt-connector">
+              <div class="jt-icon-wrap edu">📚</div>
+              <div class="jt-vline"></div>
+            </div>
+            <div class="jt-card">
+              <div class="jt-card-top">
+                <div>
+                  <span class="jt-badge edu">Education</span>
+                  <h3 class="jt-title">Intermediate (12th) – Science PCM</h3>
+                  <div class="jt-org">Motihari, Bihar · Science Stream</div>
+                </div>
+                <div class="jt-date-pill">2021 – 2023</div>
+              </div>
+              <div class="jt-meta-row">
+                <span class="jt-meta-item">📐 Physics · Chemistry · Mathematics</span>
+                <span class="jt-meta-item">✅ Completed</span>
+              </div>
+              <p class="jt-desc">
+                Completed 12th with the Science stream. This period sparked a deep interest in computers, logic, programming, and automation — laying the foundation for a DevOps career path.
+              </p>
+            </div>
+          </div>
+
+          <!-- Entry 5 -->
+          <div class="jt-entry reveal">
+            <div class="jt-connector">
+              <div class="jt-icon-wrap ongoing">🎯</div>
+            </div>
+            <div class="jt-card">
+              <div class="jt-card-top">
+                <div>
+                  <span class="jt-badge ongoing">In Progress</span>
+                  <h3 class="jt-title">CKA &amp; Terraform Associate</h3>
+                  <div class="jt-org">CNCF · HashiCorp · Daily Lab Practice</div>
+                </div>
+                <div class="jt-date-pill ongoing-pill">Ongoing</div>
+              </div>
+              <div class="jt-meta-row">
+                <span class="jt-meta-item">⏳ Preparing</span>
+                <span class="jt-meta-item">☸️ Kubernetes Admin</span>
+                <span class="jt-meta-item">🏗️ Terraform IaC</span>
+              </div>
+              <p class="jt-desc">
+                Actively preparing for two industry-recognized certifications through structured study plans, daily KodeKloud labs, and mock exams — CKA (Certified Kubernetes Administrator) and HashiCorp Terraform Associate.
+              </p>
+              <div class="jt-tools">
+                <span class="jt-tool">Kubernetes</span>
+                <span class="jt-tool">kubectl</span>
+                <span class="jt-tool">Helm</span>
+                <span class="jt-tool">Terraform</span>
+                <span class="jt-tool">HCL</span>
+                <span class="jt-tool">AWS Provider</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end journey-timeline -->
+      </div>
+
+      <style>
+        /* ── Journey Timeline ── */
+        .journey-timeline {
+          max-width: 860px; margin: 0 auto;
+          display: flex; flex-direction: column; gap: 0;
+        }
+        .jt-entry {
+          display: flex; gap: 0; align-items: flex-start;
+        }
+        .jt-connector {
+          display: flex; flex-direction: column; align-items: center;
+          flex-shrink: 0; width: 56px; padding-top: 1.6rem;
+        }
+        .jt-icon-wrap {
+          width: 40px; height: 40px; border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 1.1rem; flex-shrink: 0; z-index: 1;
+          border: 2px solid;
+        }
+        .jt-icon-wrap.edu     { background: rgba(99,102,241,0.15); border-color: var(--purple); }
+        .jt-icon-wrap.devops  { background: rgba(34,211,238,0.12); border-color: var(--cyan); }
+        .jt-icon-wrap.cert    { background: rgba(250,204,21,0.12); border-color: #facc15; }
+        .jt-icon-wrap.ongoing { background: rgba(74,222,128,0.12); border-color: var(--green); }
+
+        .jt-vline {
+          width: 2px; flex: 1; min-height: 24px;
+          background: linear-gradient(180deg, rgba(99,102,241,0.4) 0%, rgba(99,102,241,0.05) 100%);
+          margin-top: 4px;
+        }
+
+        .jt-card {
+          flex: 1; margin-left: 1rem; margin-bottom: 2rem;
+          background: var(--card);
+          border: 1px solid var(--border);
+          border-radius: 16px; padding: 1.4rem 1.6rem;
+          transition: border-color 0.3s, transform 0.3s;
+        }
+        .jt-card:hover { border-color: var(--purple); transform: translateX(4px); }
+
+        .jt-card-top {
+          display: flex; justify-content: space-between;
+          align-items: flex-start; gap: 1rem; margin-bottom: 0.75rem;
+          flex-wrap: wrap;
+        }
+
+        .jt-badge {
+          display: inline-block;
+          font-size: 0.68rem; font-weight: 700;
+          letter-spacing: 1px; text-transform: uppercase;
+          padding: 0.2rem 0.7rem; border-radius: 50px;
+          margin-bottom: 0.4rem;
+        }
+        .jt-badge.edu     { background: rgba(99,102,241,0.15); color: var(--purple-light); border: 1px solid rgba(99,102,241,0.3); }
+        .jt-badge.devops  { background: rgba(34,211,238,0.1);  color: var(--cyan);         border: 1px solid rgba(34,211,238,0.25); }
+        .jt-badge.cert    { background: rgba(250,204,21,0.1);  color: #facc15;             border: 1px solid rgba(250,204,21,0.25); }
+        .jt-badge.ongoing { background: rgba(74,222,128,0.1);  color: var(--green);        border: 1px solid rgba(74,222,128,0.25); }
+
+        .jt-title { font-size: 1rem; font-weight: 800; color: var(--white); line-height: 1.3; }
+        .jt-org   { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+
+        .jt-date-pill {
+          flex-shrink: 0;
+          background: rgba(99,102,241,0.12);
+          border: 1px solid rgba(99,102,241,0.25);
+          color: var(--purple-light);
+          font-size: 0.75rem; font-weight: 700;
+          padding: 0.3rem 0.85rem; border-radius: 50px;
+          white-space: nowrap;
+        }
+        .jt-date-pill.ongoing-pill {
+          background: rgba(74,222,128,0.1);
+          border-color: rgba(74,222,128,0.25);
+          color: var(--green);
+        }
+
+        .jt-meta-row {
+          display: flex; flex-wrap: wrap; gap: 0.6rem;
+          margin-bottom: 0.75rem;
+        }
+        .jt-meta-item {
+          font-size: 0.75rem; color: var(--muted);
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.07);
+          padding: 0.2rem 0.65rem; border-radius: 6px;
+        }
+
+        .jt-desc {
+          color: var(--muted); font-size: 0.87rem;
+          line-height: 1.75; margin-bottom: 0.9rem;
+        }
+
+        .jt-tools { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .jt-tool {
+          background: rgba(34,211,238,0.07);
+          border: 1px solid rgba(34,211,238,0.18);
+          color: var(--cyan); font-size: 0.75rem;
+          padding: 0.2rem 0.65rem; border-radius: 6px;
+        }
+
+        /* Learning path chain */
+        .jt-path-row {
+          display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;
+          margin-top: 0.5rem;
+        }
+        .jt-path-item {
+          background: rgba(99,102,241,0.1);
+          border: 1px solid rgba(99,102,241,0.2);
+          color: var(--purple-light);
+          font-size: 0.78rem; font-weight: 600;
+          padding: 0.25rem 0.7rem; border-radius: 8px;
+        }
+        .jt-arrow { color: var(--muted); font-size: 0.9rem; }
+
+        @media (max-width: 600px) {
+          .jt-connector { width: 40px; }
+          .jt-icon-wrap { width: 32px; height: 32px; font-size: 0.9rem; }
+          .jt-card { padding: 1.1rem 1rem; }
+          .jt-card-top { flex-direction: column; gap: 0.5rem; }
+          .jt-path-row { gap: 0.3rem; }
+        }
+      </style>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 Prince Kumar &nbsp;|&nbsp; <a href="mailto:riseasprince@gmail.com">riseasprince@gmail.com</a> &nbsp;|&nbsp; Motihari, India</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

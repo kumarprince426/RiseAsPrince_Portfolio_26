@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects – Prince Kumar | DevOps</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <img src="riseasprincelogo.png" alt="Prince" class="nav-avatar" />
+      <span class="nav-name">RiseAsPrince</span>
+    </a>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-auth-area" id="navAuthArea">
+      <a href="login.html" class="nav-btn-login">Login</a>
+      <a href="login.html?tab=signup" class="nav-btn-signup">Sign Up</a>
+    </div>
+    <div class="nav-user-info hidden" id="navUserArea">
+      <div class="nav-user-dot" id="navUserDot">P</div>
+      <span class="nav-user-name" id="navUserName">User</span>
+      <button class="nav-btn-logout" id="navLogout">Logout</button>
+    </div>
+  </nav>
+  <link rel="stylesheet" href="auth.css" />
+
+  <div class="page">
+    <div class="section">
+      <div class="section-header reveal">
+        <span class="section-tag">What I've Built</span>
+        <h2 class="section-title">DevOps <span>Projects</span></h2>
+        <div class="section-line"></div>
+        <p class="section-sub">7 real-world DevOps & Cloud projects</p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div style="display:flex; gap:0.6rem; justify-content:center; flex-wrap:wrap; margin-bottom:2.5rem;" class="reveal">
+        <button class="btn btn-primary filter-btn active" data-filter="all">All</button>
+        <button class="btn btn-outline filter-btn" data-filter="cicd">CI/CD</button>
+        <button class="btn btn-outline filter-btn" data-filter="k8s">Kubernetes</button>
+        <button class="btn btn-outline filter-btn" data-filter="iac">IaC</button>
+        <button class="btn btn-outline filter-btn" data-filter="monitor">Monitoring</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+
+        <div class="project-card reveal" data-cat="cicd">
+          <div class="project-icon">🐳</div>
+          <h3>CI/CD Pipeline with Jenkins & Docker</h3>
+          <p>Built a fully automated CI/CD pipeline using Jenkins, Docker, and GitHub webhooks. Pipeline covers code checkout, build, unit tests, Docker image creation, push to DockerHub, and deployment to a server.</p>
+          <div class="project-tags">
+            <span class="project-tag">Jenkins</span>
+            <span class="project-tag">Docker</span>
+            <span class="project-tag">GitHub</span>
+            <span class="project-tag">CI/CD</span>
+          </div>
+          <a href="https://github.com/kumarprince426" target="_blank" class="btn btn-outline" style="margin-top:0.5rem; font-size:0.8rem; padding:0.5rem 1rem;">View on GitHub →</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="k8s">
+          <div class="project-icon">☸️</div>
+          <h3>Kubernetes Microservices Deployment</h3>
+          <p>Deployed a multi-service application (frontend, backend, database) on Kubernetes cluster. Configured deployments, services, ingress, auto-scaling (HPA), resource limits, and rolling updates.</p>
+          <div class="project-tags">
+            <span class="project-tag">Kubernetes</span>
+            <span class="project-tag">Helm</span>
+            <span class="project-tag">Docker</span>
+            <span class="project-tag">Ingress</span>
+          </div>
+          <a href="https://github.com/kumarprince426" target="_blank" class="btn btn-outline" style="margin-top:0.5rem; font-size:0.8rem; padding:0.5rem 1rem;">View on GitHub →</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="iac">
+          <div class="project-icon">🏗️</div>
+          <h3>AWS Infrastructure with Terraform</h3>
+          <p>Provisioned complete AWS infrastructure including VPC, subnets, EC2, RDS, S3, IAM roles, and security groups using Terraform. Remote state stored in S3 with DynamoDB state locking.</p>
+          <div class="project-tags">
+            <span class="project-tag">Terraform</span>
+            <span class="project-tag">AWS</span>
+            <span class="project-tag">VPC</span>
+            <span class="project-tag">IaC</span>
+          </div>
+          <a href="https://github.com/kumarprince426" target="_blank" class="btn btn-outline" style="margin-top:0.5rem; font-size:0.8rem; padding:0.5rem 1rem;">View on GitHub →</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="monitor">
+          <div class="project-icon">📊</div>
+          <h3>Monitoring Stack: Prometheus & Grafana</h3>
+          <p>Set up a full observability stack using Prometheus for metrics collection and Grafana for dashboards. Monitored Kubernetes cluster health, pod performance, CPU/memory usage, and set up alert rules.</p>
+          <div class="project-tags">
+            <span class="project-tag">Prometheus</span>
+            <span class="project-tag">Grafana</span>
+            <span class="project-tag">Kubernetes</span>
+            <span class="project-tag">Alerting</span>
+          </div>
+          <a href="https://github.com/kumarprince426" target="_blank" class="btn btn-outline" style="margin-top:0.5rem; font-size:0.8rem; padding:0.5rem 1rem;">View on GitHub →</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="iac">
+          <div class="project-icon">🤖</div>
+          <h3>Server Configuration with Ansible</h3>
+          <p>Automated server provisioning and configuration management using Ansible playbooks. Configured Nginx, Docker, firewall rules, user management, and application deployment across multiple servers.</p>
+          <div class="project-tags">
+            <span class="project-tag">Ansible</span>
+            <span class="project-tag">Linux</span>
+            <span class="project-tag">Nginx</span>
+            <span class="project-tag">Automation</span>
+          </div>
+          <a href="https://github.com/kumarprince426" target="_blank" class="btn btn-outline" style="margin-top:0.5rem; font-size:0.8rem; padding:0.5rem 1rem;">View on GitHub →</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="cicd">
+          <div class="project-icon">⚡</div>
+          <h3>GitHub Actions – DevSecOps Pipeline</h3>
+          <p>Created a DevSecOps pipeline using GitHub Actions integrating SonarQube for code quality, Trivy for container vulnerability scanning, and automated deployment to AWS EKS on merge to main.</p>
+          <div class="project-tags">
+            <span class="project-tag">GitHub Actions</span>
+            <span class="project-tag">SonarQube</span>
+            <span class="project-tag">Trivy</span>
+            <span class="project-tag">AWS EKS</span>
+          </div>
+          <a href="https://github.com/kumarprince426" target="_blank" class="btn btn-outline" style="margin-top:0.5rem; font-size:0.8rem; padding:0.5rem 1rem;">View on GitHub →</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="monitor">
+          <div class="project-icon">🔍</div>
+          <h3>Centralized Logging with ELK Stack</h3>
+          <p>Deployed ELK Stack (Elasticsearch, Logstash, Kibana) on Docker for centralized log aggregation, parsing, and visualization. Configured Filebeat agents to ship logs from multiple application containers.</p>
+          <div class="project-tags">
+            <span class="project-tag">Elasticsearch</span>
+            <span class="project-tag">Logstash</span>
+            <span class="project-tag">Kibana</span>
+            <span class="project-tag">Filebeat</span>
+          </div>
+          <a href="https://github.com/kumarprince426" target="_blank" class="btn btn-outline" style="margin-top:0.5rem; font-size:0.8rem; padding:0.5rem 1rem;">View on GitHub →</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 Prince Kumar &nbsp;|&nbsp; <a href="mailto:riseasprince@gmail.com">riseasprince@gmail.com</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('btn-primary'); b.classList.add('btn-outline');
+        });
+        this.classList.add('btn-primary'); this.classList.remove('btn-outline');
+        const filter = this.dataset.filter;
+        document.querySelectorAll('.project-card').forEach(card => {
+          card.style.display = (filter === 'all' || card.dataset.cat === filter) ? 'flex' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Sign Up – RiseAsPrince</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body class="auth-page">
+
+  <!-- Back to site -->
+  <a href="index.html" class="auth-back">← Back to Site</a>
+
+  <div class="auth-container">
+
+    <!-- Brand -->
+    <div class="auth-brand">
+      <img src="riseasprincelogo.png" alt="Prince" class="auth-brand-avatar" />
+      <span class="auth-brand-name">RiseAsPrince</span>
+      <p class="auth-brand-sub">Prince Kumar · DevOps Engineer</p>
+    </div>
+
+    <!-- Tab switcher -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Login</button>
+      <button class="auth-tab" id="tabSignup" onclick="switchTab('signup')">Sign Up</button>
+    </div>
+
+    <!-- ===== LOGIN FORM ===== -->
+    <div class="auth-form-wrap" id="loginWrap">
+      <h2 class="auth-title">Welcome Back 👋</h2>
+      <p class="auth-sub">Login with your Gmail or Mobile number</p>
+
+      <form id="loginForm" novalidate>
+        <!-- Identifier -->
+        <div class="auth-field">
+          <label>Gmail ID or Mobile Number</label>
+          <input type="text" id="loginId" placeholder="name@gmail.com  or  10-digit number" autocomplete="username" required />
+        </div>
+        <!-- Password -->
+        <div class="auth-field">
+          <label>Password</label>
+          <div class="pw-wrap">
+            <input type="password" id="loginPw" placeholder="Enter your password" required />
+            <button type="button" class="pw-eye" data-t="loginPw">👁</button>
+          </div>
+        </div>
+
+        <p class="auth-error" id="loginErr"></p>
+
+        <button type="submit" class="btn btn-primary full-w">Login →</button>
+      </form>
+
+      <p class="auth-switch">Don't have an account? <a href="#" onclick="switchTab('signup')">Sign Up</a></p>
+    </div>
+
+    <!-- ===== SIGNUP FORM ===== -->
+    <div class="auth-form-wrap hidden" id="signupWrap">
+      <h2 class="auth-title">Create Account 🚀</h2>
+      <p class="auth-sub">Sign up with Gmail or Mobile number</p>
+
+      <form id="signupForm" novalidate>
+        <div class="auth-field">
+          <label>Full Name</label>
+          <input type="text" id="suName" placeholder="Your full name" required />
+        </div>
+        <div class="auth-field">
+          <label>Gmail ID</label>
+          <input type="email" id="suEmail" placeholder="yourname@gmail.com" required />
+        </div>
+        <div class="auth-field">
+          <label>Mobile Number</label>
+          <input type="tel" id="suMobile" placeholder="10-digit mobile number" maxlength="10" required />
+        </div>
+        <div class="auth-field">
+          <label>Password</label>
+          <div class="pw-wrap">
+            <input type="password" id="suPw" placeholder="Create a password (min 6 chars)" required />
+            <button type="button" class="pw-eye" data-t="suPw">👁</button>
+          </div>
+        </div>
+        <div class="auth-field">
+          <label>Confirm Password</label>
+          <div class="pw-wrap">
+            <input type="password" id="suPw2" placeholder="Repeat your password" required />
+            <button type="button" class="pw-eye" data-t="suPw2">👁</button>
+          </div>
+        </div>
+
+        <p class="auth-error" id="signupErr"></p>
+
+        <button type="submit" class="btn btn-primary full-w">Create Account →</button>
+      </form>
+
+      <p class="auth-switch">Already have an account? <a href="#" onclick="switchTab('login')">Login</a></p>
+    </div>
+
+  </div>
+
+  <script src="auth.js"></script>
+</body>
+</html>
